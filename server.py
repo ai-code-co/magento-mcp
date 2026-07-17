@@ -2,11 +2,17 @@
 
 from __future__ import annotations
 
+import os
+
 from mcp.server.fastmcp import FastMCP
 
 from magento_client import MagentoAPIError, MagentoClient, MagentoConfigError
 
-mcp = FastMCP("Magento Manager")
+mcp = FastMCP(
+    "Magento Manager",
+    host="0.0.0.0",
+    port=int(os.getenv("PORT", "10000")),
+)
 
 
 def _client() -> MagentoClient:
@@ -199,4 +205,4 @@ async def list_categories() -> dict | str:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport="streamable-http")
