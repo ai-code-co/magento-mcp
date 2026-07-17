@@ -14,6 +14,7 @@ MAGENTO_URL = os.getenv("MAGENTO_URL", "").rstrip("/")
 ACCESS_TOKEN = os.getenv("ACCESS_TOKEN", "")
 
 DEFAULT_HEADERS = {
+    "ngrok-skip-browser-warning": "true",
     "Content-Type": "application/json",
     "Accept": "application/json",
     "User-Agent": (
